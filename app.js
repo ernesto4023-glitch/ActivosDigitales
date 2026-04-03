@@ -154,6 +154,17 @@ secciones.forEach((seccion) => {
     }
   });
 
+  // Card 4
+  gsap.from(seccion.querySelector(".card4"), {
+    x: 180,
+    opacity: 0,
+    duration: 1.1,
+    scrollTrigger: {
+      trigger: seccion.querySelector(".card4"),
+      start: "top 100%",
+    }
+  });
+
 });
 
 gsap.from('.horario h2',{
