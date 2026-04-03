@@ -285,7 +285,7 @@ gsap.from('.cd1',{
   duration:1.5,
   
   scrollTrigger: {
-    trigger: ".cd2",
+    trigger: ".cd1",
     start: "top 100%", // cuando entra en pantalla
   }
 });
