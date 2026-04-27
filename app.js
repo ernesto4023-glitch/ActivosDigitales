@@ -5,33 +5,60 @@ botones.forEach(btn => {
     })
 })
 
-const swiper = new Swiper(".mySwiper", {
-  loop: true,
-  spaceBetween: 20,
-  centeredSlides: true,
+const modal = document.getElementById("modal");
+const abrir = document.getElementById("abrirModal");
+const cerrar = document.querySelector(".cerrar");
 
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
+abrir.onclick = () => {
+  modal.style.display = "block";
+}
 
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
+cerrar.onclick = () => {
+  modal.style.display = "none";
+}
 
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+window.onclick = (e) => {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+const inputFile = document.getElementById("imagenInput");
+const preview = document.getElementById("preview");
+const quitarBtn = document.getElementById("quitarImagen");
+
+inputFile.addEventListener("change", function() {
+  const file = this.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+      preview.style.display = "block";
+      quitarBtn.style.display = "inline-block";
+    }
+
+    reader.readAsDataURL(file);
+  }
 });
 
-/*const toggle = document.getElementById("menu-toggle");
+quitarBtn.addEventListener("click", function() {
+  preview.src = "";
+  preview.style.display = "none";
+  inputFile.value = ""; // 🔥 esto limpia el input
+  quitarBtn.style.display = "none";
+});
+
+/*Menu Hamburguesa */
+
+const toggle = document.getElementById("menu-toggle");
 const nav = document.querySelector(".nav");
 
 toggle.addEventListener("click", () => {
   nav.classList.toggle("active");
-});*/
+});
 
 gsap.from('.navbar .logo',{
   x:60,
